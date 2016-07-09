@@ -1,5 +1,8 @@
 var CRUDModel = require('../models/model');
 module.exports = {
+	index: function(req, res, next){
+		res.render('index');
+	},
 	findAll: function(req, res, next){
 		CRUDModel.find({}, function(err, data){
 			if(err){

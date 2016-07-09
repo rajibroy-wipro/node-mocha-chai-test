@@ -9,8 +9,7 @@ var mongo = require('mongodb');
 
 var app = express();
 
-var config = require('./config'),
-    server = require('./app');
+var config = require('./server/config');
 
 mongoose.connect(config.mongoURI[app.settings.env], function(err, res) {
   if(err) {
@@ -20,7 +19,7 @@ mongoose.connect(config.mongoURI[app.settings.env], function(err, res) {
   }
 });
 
-var routes = require('./routes/index');
+var routes = require('./server/routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+routes(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
