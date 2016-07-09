@@ -26,7 +26,7 @@ module.exports = {
 			if(err){
 				res.json(err);
 			}else{
-				res.json(data);
+				res.json({'Success' : data});
 			}
 		})
 	},
@@ -37,7 +37,7 @@ module.exports = {
 				if(err){
 					res.json(err);
 				}else{
-					res.json(data);
+					res.json({'UPDATED' : data});
 				}
 			})
 		})
@@ -51,7 +51,7 @@ module.exports = {
 					if(err){
 						res.json(err);
 					}else{
-						res.json(data);
+						res.json({'REMOVED': data});
 					}
 				})				
 			}

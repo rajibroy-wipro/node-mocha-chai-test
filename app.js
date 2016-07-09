@@ -9,7 +9,8 @@ var mongo = require('mongodb');
 
 var app = express();
 
-var config = require('./config');
+var config = require('./config'),
+    server = require('./app');
 
 mongoose.connect(config.mongoURI[app.settings.env], function(err, res) {
   if(err) {
@@ -29,7 +30,7 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
