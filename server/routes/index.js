@@ -3,6 +3,7 @@ var router = express.Router();
 var controller = require('../../controllers/controller');
 
 module.exports = function(app) {
+	console.log("hello");
 	router.get('/', controller.index);
 	router.get('/cruds/:id', controller.findOne);
 	router.get('/cruds', controller.findAll);
